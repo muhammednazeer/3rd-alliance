@@ -4,6 +4,7 @@
   const body = document.body;
   const header = document.querySelector('#header');
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const mobileNavCloseBtn = document.querySelector('.mobile-nav-close');
   const scrollTopBtn = document.querySelector('.scroll-top');
 
   function toggleScrolled() {
@@ -55,6 +56,14 @@
     mobileNavToggleBtn.setAttribute('aria-expanded', 'false');
   }
 
+  if (mobileNavCloseBtn) {
+    mobileNavCloseBtn.addEventListener('click', () => {
+      if (body.classList.contains('mobile-nav-active')) {
+        toggleMobileNav();
+      }
+    });
+  }
+
   document.querySelectorAll('#navmenu a').forEach((navLink) => {
     navLink.addEventListener('click', () => {
       if (body.classList.contains('mobile-nav-active')) {
@@ -70,6 +79,12 @@
       this.parentNode.nextElementSibling?.classList.toggle('dropdown-active');
       e.stopImmediatePropagation();
     });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && body.classList.contains('mobile-nav-active')) {
+      toggleMobileNav();
+    }
   });
 
   const preloader = document.querySelector('#preloader');

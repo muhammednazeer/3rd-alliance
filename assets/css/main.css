@@ -279,6 +279,10 @@ h6 {
   line-height: 1.05;
 }
 
+.navmenu .mobile-nav-close {
+  display: none;
+}
+
 .scrolled .header {
   box-shadow: 0 16px 38px rgba(7, 20, 11, 0.1);
   background:
@@ -452,6 +456,23 @@ h6 {
     border: 1px solid rgba(15, 106, 60, 0.08);
   }
 
+  .navmenu .mobile-nav-close {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 1px solid rgba(15, 106, 60, 0.12);
+    border-radius: 50%;
+    background: rgba(15, 106, 60, 0.08);
+    color: var(--heading-color);
+    font-size: 1.15rem;
+    z-index: 10001;
+    box-shadow: 0 10px 20px rgba(7, 20, 11, 0.08);
+  }
+
   .navmenu {
     padding: 0;
     z-index: 9997;
@@ -461,7 +482,7 @@ h6 {
     display: none;
     list-style: none;
     position: absolute;
-    inset: 72px 16px 16px 16px;
+    inset: 0;
     padding: 12px 0;
     margin: 0;
     border-radius: 24px;
@@ -476,11 +497,11 @@ h6 {
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--nav-dropdown-color);
-    padding: 12px 20px;
+    color: #163322;
+    padding: 14px 20px;
     font-family: var(--nav-font);
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -512,7 +533,8 @@ h6 {
   .navmenu a:hover,
   .navmenu .active,
   .navmenu .active:focus {
-    color: var(--nav-dropdown-hover-color);
+    color: var(--accent-color);
+    background: rgba(15, 106, 60, 0.08);
   }
 
   .navmenu .active i,
@@ -569,6 +591,19 @@ h6 {
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+    position: fixed;
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+    z-index: 10000;
+  }
+
+  .mobile-nav-active .navmenu .mobile-nav-close {
+    display: grid;
   }
 }
 
