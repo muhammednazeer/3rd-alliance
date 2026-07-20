@@ -457,7 +457,7 @@ h6 {
   }
 
   .navmenu .mobile-nav-close {
-    display: grid;
+    display: none;
     place-items: center;
     width: 46px;
     height: 46px;
@@ -471,6 +471,38 @@ h6 {
     font-size: 1.15rem;
     z-index: 10001;
     box-shadow: 0 10px 20px rgba(7, 20, 11, 0.08);
+  }
+
+  .navmenu .mobile-nav-brand {
+    display: none;
+    position: relative;
+    z-index: 10001;
+    padding: 0.65rem 5.5rem 0.95rem 1.1rem;
+    margin: 0.6rem 0.65rem 0.5rem;
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255, 213, 106, 0.16), transparent 35%),
+      linear-gradient(135deg, rgba(15, 106, 60, 0.1), rgba(255, 255, 255, 0.94));
+    border: 1px solid rgba(15, 106, 60, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .navmenu .mobile-nav-brand span {
+    display: block;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--heading-color);
+  }
+
+  .navmenu .mobile-nav-brand small {
+    display: block;
+    margin-top: 0.25rem;
+    color: color-mix(in srgb, var(--default-color), transparent 22%);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .navmenu {
@@ -590,20 +622,42 @@ h6 {
   }
 
   .mobile-nav-active .navmenu>ul {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     position: fixed;
-    top: 72px;
+    top: 164px;
     left: 16px;
     right: 16px;
     bottom: 16px;
     width: auto;
-    max-height: calc(100vh - 88px);
+    max-height: calc(100vh - 180px);
     overflow-y: auto;
     z-index: 10000;
+    padding-top: 8px;
   }
 
   .mobile-nav-active .navmenu .mobile-nav-close {
     display: grid;
+  }
+
+  .mobile-nav-active .navmenu .mobile-nav-brand {
+    display: block;
+  }
+
+  .mobile-nav-active .navmenu>ul > li {
+    width: 100%;
+  }
+
+  .mobile-nav-active .navmenu>ul > li > a {
+    width: 100%;
+  }
+
+  .mobile-nav-active .navmenu .mobile-nav-brand {
+    position: fixed;
+    top: 84px;
+    left: 16px;
+    right: 16px;
   }
 }
 
