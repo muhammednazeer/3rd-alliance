@@ -605,7 +605,7 @@ h6 {
     position: fixed;
     inset: 0;
     z-index: 2147483640;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .mobile-nav-active #header .container-fluid {
@@ -626,29 +626,37 @@ h6 {
 
   .mobile-nav-active .navmenu {
     position: fixed;
-    overflow: hidden;
+    display: block;
+    overflow: visible;
     inset: 0;
     z-index: 2147483641;
-    background: rgba(7, 20, 11, 0.58);
+    background:
+      radial-gradient(circle at top left, rgba(255, 213, 106, 0.12), transparent 32%),
+      linear-gradient(180deg, rgba(7, 20, 11, 0.72), rgba(7, 20, 11, 0.82));
     transition: 0.3s;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    transform: translateZ(0);
+    isolation: isolate;
   }
 
   .mobile-nav-active .navmenu>ul {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-    max-height: calc(100vh - 24px);
+    position: relative;
+    inset: auto;
+    width: calc(100vw - 24px);
+    max-width: 460px;
+    height: calc(100dvh - 24px);
+    max-height: calc(100dvh - 24px);
+    margin: 12px auto;
     overflow-y: auto;
     z-index: 2147483642;
     padding: 104px 0 16px;
+    border: 1px solid rgba(15, 106, 60, 0.08);
+    box-shadow: 0px 24px 50px rgba(7, 20, 11, 0.18);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 249, 247, 0.96));
+    border-radius: 24px;
   }
 
   .mobile-nav-active .navmenu .mobile-nav-close {
@@ -669,11 +677,11 @@ h6 {
   }
 
   .mobile-nav-active .navmenu .mobile-nav-brand {
-    position: fixed;
+    position: absolute;
     z-index: 2147483643;
-    top: 20px;
-    left: 20px;
-    right: 72px;
+    top: 16px;
+    left: 16px;
+    right: 68px;
   }
 }
 
