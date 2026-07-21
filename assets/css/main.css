@@ -270,7 +270,7 @@ h6 {
   margin-right: 8px;
 }
 
-.header .logo h1 {
+.header .logo .sitename {
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   margin: 0;
   font-weight: 700;
@@ -1101,7 +1101,7 @@ section,
   color: var(--accent-color);
 }
 
-.intro-band h2 {
+.intro-band h1 {
   font-size: clamp(2rem, 4.5vw, 3.8rem);
   line-height: 1.05;
   margin: 0.75rem 0 1rem;
