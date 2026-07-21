@@ -626,15 +626,15 @@ h6 {
     flex-direction: column;
     gap: 0.25rem;
     position: fixed;
-    top: 164px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
     width: auto;
-    max-height: calc(100vh - 180px);
+    max-height: calc(100vh - 24px);
     overflow-y: auto;
     z-index: 10000;
-    padding-top: 8px;
+    padding: 104px 0 16px;
   }
 
   .mobile-nav-active .navmenu .mobile-nav-close {
@@ -655,9 +655,9 @@ h6 {
 
   .mobile-nav-active .navmenu .mobile-nav-brand {
     position: fixed;
-    top: 84px;
-    left: 16px;
-    right: 16px;
+    top: 20px;
+    left: 20px;
+    right: 72px;
   }
 }
 
