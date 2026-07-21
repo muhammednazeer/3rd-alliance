@@ -3,9 +3,15 @@
 
   const body = document.body;
   const header = document.querySelector('#header');
+  const navmenu = document.querySelector('#navmenu');
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
   const mobileNavCloseBtn = document.querySelector('.mobile-nav-close');
   const scrollTopBtn = document.querySelector('.scroll-top');
+  const navmenuPlaceholder = navmenu ? document.createComment('navmenu-placeholder') : null;
+
+  if (navmenu && navmenuPlaceholder && navmenu.parentNode) {
+    navmenu.parentNode.insertBefore(navmenuPlaceholder, navmenu);
+  }
 
   function toggleScrolled() {
     if (!header) return;
@@ -25,10 +31,35 @@
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
     mobileNavToggleBtn.setAttribute('aria-expanded', body.classList.contains('mobile-nav-active') ? 'true' : 'false');
+
+    if (navmenu && navmenuPlaceholder) {
+      if (body.classList.contains('mobile-nav-active')) {
+        if (navmenu.parentNode !== document.body) {
+          document.body.appendChild(navmenu);
+        }
+      } else if (navmenuPlaceholder.parentNode && navmenu.parentNode === document.body) {
+        navmenuPlaceholder.parentNode.insertBefore(navmenu, navmenuPlaceholder);
+      }
+    }
   }
 
   document.addEventListener('scroll', toggleScrolled, { passive: true });
   window.addEventListener('load', toggleScrolled);
+
+  window.addEventListener('resize', () => {
+    if (!navmenu || !navmenuPlaceholder) return;
+
+    if (window.innerWidth >= 1200 && navmenu.parentNode === document.body && navmenuPlaceholder.parentNode) {
+      navmenuPlaceholder.parentNode.insertBefore(navmenu, navmenuPlaceholder);
+      body.classList.remove('mobile-nav-active');
+
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.classList.add('bi-list');
+        mobileNavToggleBtn.classList.remove('bi-x');
+        mobileNavToggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  }, { passive: true });
 
   if (header && header.classList.contains('scroll-up-sticky')) {
     let lastScrollTop = 0;
